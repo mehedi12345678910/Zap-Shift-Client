@@ -27,7 +27,7 @@ const Brands = () => {
         centeredSlides={true}
         spaceBetween={30}
         grabCursor={true}
-        loop={true}
+        loop={false}
         modules={[Autoplay]}
         autoplay={{
           delay: 1000,

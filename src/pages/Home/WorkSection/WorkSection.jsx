@@ -36,7 +36,7 @@ const WorkSection = () => {
   return (
     <div>
         <h1 className="text-3xl py-4 font-bold">How it Works</h1>
-      <div className="grid md:grid-cols-4 gap-5 grid-cols-2">
+      <div className="grid md:grid-cols-4 gap-5 grid-cols-1">
         {cardData.map((item) => (
           <div key={item.id} className="bg-white rounded-2xl p-6 hover:bg-gray-400">
             <p className="text-5xl ">{item.img}</p>

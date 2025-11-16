@@ -55,7 +55,7 @@ const Services = () => {
         <h1 className="text-3xl font-bold py-2">Our Services</h1>
         <p className="text-[15px] w-[700px] text-gray-400">Enjoy fast, reliable parcel delivery with real-time tracking and zero hassle. From personal packages to business shipments — we deliver on time, every time.</p>
       </div>
-      <div className="grid-cols-2 grid md:grid-cols-3 gap-6">
+      <div className="grid-cols-1 grid md:grid-cols-3 gap-6">
         {
             services.map((item)=>(
                 <div key={item.id} className="bg-white rounded-2xl p-8 flex flex-col items-center hover:bg-green-300" >
