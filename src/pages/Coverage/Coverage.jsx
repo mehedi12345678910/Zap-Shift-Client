@@ -1,16 +1,61 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useLoaderData } from "react-router";
 const Coverage = () => {
   const position = [23.685, 90.3563];
   const serviceCenters = useLoaderData();
-  console.log(serviceCenters);
-  return (
-    <div>
-      <h2 className="text-5xl">we are available in 64 districts</h2>
+  //   console.log(serviceCenters);
+  const mapRef = useRef(null);
 
-      <div></div>
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const location = e.target.location.value;
+    const district = serviceCenters.find((c) =>
+      c.district.toLowerCase().includes(location.toLowerCase())
+    );
+    if (district) {
+      const coord = [district.latitude, district.longitude];
+      console.log(district, coord);
+      mapRef.current.flyTo(coord, 14);
+    }
+  };
+
+  return (
+    <div >
+      <h2 className="text-5xl">we are available in 64 districts</h2>
+      {/* search */}
+      <div className="py-4">
+        <form onSubmit={handleSearch}>
+          <label className="input bg-white">
+            <svg
+              className="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input
+              type="search"
+              className="grow"
+              placeholder="Search"
+              name="location"
+            />
+            <kbd className="kbd kbd-sm">⌘</kbd>
+            <kbd className="kbd kbd-sm">K</kbd>
+            <button className="btn w-20 -mr-4 bg-primary ">search</button>
+          </label>
+        </form>
+      </div>
       {/*  */}
       <div className="w-full border h-[800px]">
         <MapContainer
@@ -18,15 +63,17 @@ const Coverage = () => {
           zoom={8}
           scrollWheelZoom={false}
           className="h-[800px]"
+          ref={mapRef}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {serviceCenters.map((center,index) => (
-            <Marker key={index} position={[center.latitude,center.longitude]}>
+          {serviceCenters.map((center, index) => (
+            <Marker key={index} position={[center.latitude, center.longitude]}>
               <Popup>
-                <strong>{center.district}</strong> <br /> Service Aria : {center.covered_area.join(", ")}.
+                <strong>{center.district}</strong> <br /> Service Aria :{" "}
+                {center.covered_area.join(", ")}.
               </Popup>
             </Marker>
           ))}
