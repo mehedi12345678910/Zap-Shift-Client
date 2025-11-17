@@ -4,13 +4,13 @@ import { Outlet } from 'react-router'
 import authImage from '../assets/authImage.png'
 const AuthLayout = () => {
   return (
-    <div className='max-w-7xl mx-auto'>
+    <div className='max-w-7xl mx-auto '>
         <Logo></Logo>
-        <div className='flex'>
+        <div className='flex items-center mt-20'>
             <div className='flex-1'>
                 <Outlet></Outlet>
             </div>
-            <div className='flex-1'>
+            <div className='flex-1  '>
                 <img src={authImage} alt="" />
             </div>
         </div>
@@ -19,3 +19,4 @@ const AuthLayout = () => {
 }
 
 export default AuthLayout
+
