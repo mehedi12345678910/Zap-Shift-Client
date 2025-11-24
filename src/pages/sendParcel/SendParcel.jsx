@@ -50,6 +50,7 @@ const SendParcel = () => {
       }
     }
     console.log("cost", cost);
+    data.cost=cost;
     Swal.fire({
       title: "Agree with the Cost ? ",
       text: `You will be charge ${cost} taka!`,
@@ -147,7 +148,7 @@ const SendParcel = () => {
               defaultValue={user?.email}
               className="input w-full"
               placeholder="Sender Email"
-              required
+             
             />
             {/* sender region */}
             <fieldset className="fieldset">
@@ -209,7 +210,7 @@ const SendParcel = () => {
               {...register("receiverEmail")}
               className="input w-full"
               placeholder="Receiver Email"
-              required
+            
             />
 
             {/* receiver  region */}
