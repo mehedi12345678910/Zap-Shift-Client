@@ -1,5 +1,7 @@
 import React from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
+import { FaRegCreditCard } from "react-icons/fa";
+import { GiCarDoor } from "react-icons/gi";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -34,7 +36,6 @@ const DashboardLayout = () => {
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
-        
       </div>
 
       <div className="drawer-side is-drawer-close:overflow-visible">
@@ -48,7 +49,8 @@ const DashboardLayout = () => {
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
-              <Link to='/'
+              <Link
+                to="/"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
@@ -70,11 +72,26 @@ const DashboardLayout = () => {
               </Link>
             </li>
             {/* our dashboard links */}
-            <li><NavLink    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="MyParcels" to="/dashboard/my-parcels">
-                    <CiDeliveryTruck></CiDeliveryTruck>
-                       <span className="is-drawer-close:hidden">My Parcels</span>
-                   </NavLink></li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="MyParcels"
+                to="/dashboard/my-parcels"
+              >
+                <CiDeliveryTruck></CiDeliveryTruck>
+                <span className="is-drawer-close:hidden">My Parcels</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+                to="/dashboard/payment-history"
+              >
+                <FaRegCreditCard></FaRegCreditCard>
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </NavLink>
+            </li>
             {/* List item */}
             <li>
               <button
