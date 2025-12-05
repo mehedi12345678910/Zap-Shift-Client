@@ -18,7 +18,7 @@ const AssignRiders = () => {
       );
       return res.data;
     },
-  });
+  });    
 
   // todo: invalidate query after assigning a rider
   const { data: riders = [] } = useQuery({
